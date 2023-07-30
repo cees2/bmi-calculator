@@ -4,6 +4,8 @@
   --border-color: rgb(129, 129, 129);
   --primary: rgb(85, 75, 194);
   --primary-hover: rgb(170, 164, 235);
+  --text-primary: 14px;
+  --text-large: 18px;
 }
 
 body {
@@ -42,10 +44,10 @@ body {
 }
 
 .btn {
-  padding: 0.5rem 1.75rem;
+  padding: 0.25rem 1rem;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  font-size: 14px;
+  font-size: var(--text-primary);
   color: #fff;
   background-color: var(--primary);
   transition: 0.2s linear background-color;
@@ -62,14 +64,18 @@ body {
 
 form.bmi-form {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
 .bmi-form-label {
   margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
   font-weight: 500;
-  font-size: 20px;
+  font-size: var(--text-primary);
 }
 
 .bmi-input {
@@ -78,15 +84,16 @@ form.bmi-form {
   border: 0.5px solid var(--border-color);
   outline: none;
   padding-left: 6px;
+  display: block;
 }
 
 .single-input-wrapper {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 select.select-input {
-  font-size: 12px;
+  font-size: var(--text-primary);
   padding: 0.25rem 0.5rem;
   border-radius: 8px;
   background-color: var(--primary);
@@ -99,7 +106,5 @@ select.select-input:hover {
 }
 
 div.units-input {
-  display: flex;
-  justify-content: center;
   margin-bottom: 1rem;
 }

@@ -35,6 +35,7 @@ function App() {
         <BMIResult
           weight={weight}
           height={height}
+          heightInches={heightInches}
           unit={unit}
           heightInches={heightInches}
         />

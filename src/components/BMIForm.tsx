@@ -15,7 +15,7 @@ interface Props {
 
 const getHeightUnit = (type: Units) => {
   if (type === Units.metric) return "cm";
-  return "ft/i";
+  return "feet";
 };
 
 const getWeightUnit = (type: Units) => {
@@ -43,6 +43,21 @@ export const BMIForm = (props: Props) => {
     setShowResult(true);
   };
 
+  const setHeightValue = (e) => {
+    const formattedValue = e.target.value.trim().replace(",", ".");
+    setHeight(formattedValue);
+  };
+
+  const setHeightInchesValue = (e) => {
+    const formattedValue = e.target.value.trim().split(",")[0];
+    setHeightInches(formattedValue);
+  };
+
+  const setWeightValue = (e) => {
+    const formattedValue = e.target.value.trim().replace(",", ".");
+    setWeight(formattedValue);
+  };
+
   return (
     <div className="bmi-form-container">
       <div className="units-input">
@@ -65,7 +80,7 @@ export const BMIForm = (props: Props) => {
             id="weight"
             className="bmi-input"
             value={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            onChange={setWeightValue}
           />
         </div>
         <div className="single-input-wrapper">
@@ -77,23 +92,23 @@ export const BMIForm = (props: Props) => {
             id="height"
             className="bmi-input"
             value={height}
-            onChange={(e) => setHeight(e.target.value)}
+            onChange={setHeightValue}
           />
-          {unit === "us" && (
-            <div>
-              <label htmlFor="height" className="bmi-form-label">
-                Inches
-              </label>
-              <input
-                type="text"
-                id="height"
-                className="bmi-input"
-                value={heightInches}
-                onChange={(e) => setHeightInches(e.target.value)}
-              />
-            </div>
-          )}
         </div>
+        {unit === "us" && (
+          <div className="single-input-wrapper">
+            <label htmlFor="height" className="bmi-form-label">
+              Height [inches]
+            </label>
+            <input
+              type="text"
+              id="height"
+              className="bmi-input"
+              value={heightInches}
+              onChange={setHeightInchesValue}
+            />
+          </div>
+        )}
         <button type="submit" className="btn">
           Count
         </button>
