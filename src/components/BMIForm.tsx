@@ -6,6 +6,7 @@ interface Props {
   setHeight: (number) => void;
   weight: number;
   setWeight: (number) => void;
+  showResult: boolean;
   setShowResult: (boolean) => void;
   unit: boolean;
   setUnit: (boolean) => void;
@@ -29,6 +30,7 @@ export const BMIForm = (props: Props) => {
     setHeight,
     weight,
     setWeight,
+    showResult,
     setShowResult,
     unit,
     setUnit,
@@ -58,12 +60,24 @@ export const BMIForm = (props: Props) => {
     setWeight(formattedValue);
   };
 
+  const changeUnitTypeHandler = (e) => {
+    setUnit(e.target.value);
+    clearAppDataHandler()
+  }
+
+  const clearAppDataHandler = () => {
+    setHeight(0);
+    setWeight(0);
+    setHeightInches(0);
+    setShowResult(false);
+  };
+
   return (
     <div className="bmi-form-container">
       <div className="units-input">
         <select
           className="select-input"
-          onChange={(e) => setUnit(e.target.value)}
+          onChange={changeUnitTypeHandler}
           value={unit}
         >
           <option value="metric">Metric Units</option>
@@ -109,9 +123,10 @@ export const BMIForm = (props: Props) => {
             />
           </div>
         )}
-        <button type="submit" className="btn">
+        {!showResult && <button type="submit" className="btn">
           Count
-        </button>
+        </button>}
+        {showResult && <button className="btn clear-data-button" onClick={clearAppDataHandler}>Clear</button>}
       </form>
     </div>
   );

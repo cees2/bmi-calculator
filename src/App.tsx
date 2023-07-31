@@ -15,7 +15,6 @@ function App() {
   const [heightInches, setHeightInches] = useState(0);
   const [unit, setUnit] = useState<Units>(Units.metric);
   const [showResult, setShowResult] = useState(false);
-  //zrobic useReducerem
 
   return (
     <div className="bmi-calculator-container">
@@ -25,6 +24,7 @@ function App() {
         setWeight={setWeight}
         height={height}
         setHeight={setHeight}
+        showResult={showResult}
         setShowResult={setShowResult}
         unit={unit}
         setUnit={setUnit}
@@ -37,7 +37,6 @@ function App() {
           height={height}
           heightInches={heightInches}
           unit={unit}
-          heightInches={heightInches}
         />
       )}
     </div>

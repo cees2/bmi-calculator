@@ -1,4 +1,5 @@
 import React from "react";
+import { BMIScale } from "./BMIScale";
 
 interface Props {
   height: number;
@@ -29,5 +30,10 @@ export const BMIResult = (props: Props) => {
 
   const bmi = getBMI(height, weight, unit, heightInches);
 
-  return <p className="bmi-result">Your bmi: {bmi}</p>;
+  return (
+    <div className="bmi-result">
+      <p>Your bmi: {bmi}</p>
+      <BMIScale />
+    </div>
+  );
 };
